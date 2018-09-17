@@ -117,26 +117,28 @@ try:
                                 print("Time"+"\t"+"\t"+"Timer"+"\t"+"Pot"+"\t"+"Temp"+"\t"+"Light")
 
                                 for i in range (0,5):
-                                # Read the light sensor data
-                                light_level = ReadChannel(light_channel)
-                                light = 100 - ((light_level - 40)/float(983))*100
-                                light = round(light,0)
+                                	# Read the light sensor data
+                                	light_level = ReadChannel(light_channel)
+                                	light = 100 - ((light_level - 40)/float(983))*100
+                                	light = round(light,0)
 
-                                # Read the temperature sensor data
-                                temp_level = ReadChannel(temp_channel)
-                                temp_volts = ConvertVolts(temp_level,2)
-                                temp       = ConvertTemp(temp_level,2)
+ 	                               # Read the temperature sensor data
+        	                        temp_level = ReadChannel(temp_channel)
+                	                temp_volts = ConvertVolts(temp_level,2)
+                        	        temp       = ConvertTemp(temp_level,2)
 
-                                 #Read POT Values
-                                 pot_level = ReadChannel(pot_channel)
-                                 pot = ConvertVolts(pot_level,1)
+                                	#Read POT Values
+                                	pot_level = ReadChannel(pot_channel)
+                                	pot = ConvertVolts(pot_level,1)
 
-                                 timeC = time.strftime("%I")+ ':' + time.strftime("%M") + ':' + time.strftime("%S")
-                                 print("{}       {}s     {}V     {}C     {}%".format(timeC,timer,pot,temp,light))
-                                 time.sleep(freq)
-                                 timer = timer + freq
+                                	timeC = time.strftime("%I")+ ':' + time.strftime("%M") + ':' + time.strftime("%S")
+                            	    	print("{}       {}s     {}V     {}C     {}%".format(timeC,timer,pot,temp,light))
+                               		time.sleep(freq)
+                               		timer = timer + freq
+					
                 	timer = timer + freq
                 	time.sleep(freq)
+			
 except KeyboardInterrupt:     #Error handling
         spi.close()
 
