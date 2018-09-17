@@ -49,3 +49,42 @@ GPIO.setup(switch1, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 GPIO.setup(switch2, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 GPIO.setup(switch3, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 GPIO.setup(switch4, GPIO.IN, pull_up_down = GPIO.PUD_UP)
+
+count = 0
+x = 0
+y = 0
+timer = 0
+
+        while (1):
+
+                if GPIO.input(switch1) == 0:
+                        x = 0
+                        timer = 0
+                        os.system('clear')
+                        time.sleep(0.25)
+
+                if GPIO.input(switch2) == 0:
+                       count = count + 1
+
+                       if count == 1:
+                               freq = 0.5
+                               print("500ms")
+                       if count == 2:
+                               freq = 1
+                               print("1s")
+                       if count == 3:
+                               freq = 2
+                               print("2s")
+                               count = 0
+                       time.sleep(0.25)
+
+                if GPIO.input(switch3) == 0:
+                        if(y==0):
+                                y=1
+                                print("on")
+				print("--------------------------------------------")
+                                print("Time"+"\t"+"\t"+"Timer"+"\t"+"Pot"+"\t"+"Temp"+"\t"+"Light")
+                        else:
+                                y=0
+                                print("off")
+                        time.sleep(.25)
