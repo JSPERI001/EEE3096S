@@ -58,13 +58,13 @@ timer = 0
 try:
         while (1):
 
-                if GPIO.input(switch1) == 0:
+                if GPIO.input(switch1) == 0: 			#Reset
                         x = 0
                         timer = 0
                         os.system('clear')
                         time.sleep(0.25)
 
-                if GPIO.input(switch2) == 0:
+                if GPIO.input(switch2) == 0:			#Frequency
                        count = count + 1
 
                        if count == 1:
@@ -79,7 +79,7 @@ try:
                                count = 0
                        time.sleep(0.25)
 
-                if GPIO.input(switch3) == 0:
+                if GPIO.input(switch3) == 0:			# On & Off
                         if(y==0):
                                 y=1
                                 print("on")
@@ -89,7 +89,7 @@ try:
                                 y=0
                                 print("off")
                         time.sleep(.25)
-		if (y==1):
+		if (y==1):				#  Checking if in "On" state
 			
 			# Read the light sensor data
                         light_level = ReadChannel(light_channel)
@@ -108,11 +108,11 @@ try:
                         timeC = time.strftime("%I")+ ':' + time.strftime("%M") + ':' + time.strftime("%S")
                         print("{}       {}s     {}V     {}C     {}%".format(timeC,timer,pot,temp,light))
                         time.sleep(freq)
-                        timer = timer + freq
+                        timer = timer + freq      #Setting up timer
 			
-		if(y==0):
+		if(y==0):			# Checking if in "off" state
 			
-			if GPIO.input(switch4) == 0:
+			if GPIO.input(switch4) == 0:			#Check if Display button pressed
                                 print("--------------------------------------------")
                                 print("Time"+"\t"+"\t"+"Timer"+"\t"+"Pot"+"\t"+"Temp"+"\t"+"Light")
 
@@ -137,7 +137,7 @@ try:
                                  timer = timer + freq
                 	timer = timer + freq
                 	time.sleep(freq)
-except KeyboardInterrupt:
+except KeyboardInterrupt:     #Error handling
         spi.close()
 
 
