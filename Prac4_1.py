@@ -55,6 +55,7 @@ x = 0
 y = 0
 timer = 0
 
+try:
         while (1):
 
                 if GPIO.input(switch1) == 0:
@@ -136,4 +137,7 @@ timer = 0
                                  timer = timer + freq
                 	timer = timer + freq
                 	time.sleep(freq)
+except KeyboardInterrupt:
+        spi.close()
+
 
